@@ -47,6 +47,7 @@ class App extends Component {
       isLoading: false,
       hasError: false,
       loadingError: null,
+      newProductFormOpen: false,
     };
 
     this.handleAddToCart = this.handleAddToCart.bind(this);
@@ -55,6 +56,8 @@ class App extends Component {
     this.handleDownVote = this.handleDownVote.bind(this);
     this.handleUpVote = this.handleUpVote.bind(this);
     this.handleSetFavorite = this.handleSetFavorite.bind(this);
+    // this.saveNewProduct = this.saveNewProduct.bind(this);
+    this.toggleNewProductForm = this.toggleNewProductForm.bind(this);
   }
 
   componentDidMount() {
@@ -217,6 +220,14 @@ class App extends Component {
     this.setState({ products: updatedProducts });
   }
 
+  // saveNewProduct(newProduct) {}
+
+  toggleNewProductForm() {
+    this.setState((prevState) => ({
+      newProductFormOpen: !prevState.newProductFormOpen,
+    }));
+  }
+
   render() {
     const {
       cartItems,
@@ -224,6 +235,7 @@ class App extends Component {
       isLoading,
       hasError,
       loadingError,
+      newProductFormOpen,
     } = this.state;
 
     return (
@@ -233,12 +245,15 @@ class App extends Component {
         isLoading={isLoading}
         hasError={hasError}
         loadingError={loadingError}
-        handleDownVote={() => {}}
-        handleUpVote={() => {}}
-        handleSetFavorite={() => {}}
-        handleAddToCart={() => {}}
-        handleRemove={() => {}}
-        handleChange={() => {}}
+        handleDownVote={this.handleDownVote}
+        handleUpVote={this.handleUpVote}
+        handleSetFavorite={this.handleSetFavorite}
+        handleAddToCart={this.handleAddToCart}
+        handleRemove={this.handleRemove}
+        handleChange={this.handleChange}
+        newProductFormOpen={newProductFormOpen}
+        // saveNewProduct={this.saveNewProduct}
+        toggleNewProductForm={this.toggleNewProductForm}
       />
     );
   }
