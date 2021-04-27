@@ -6,7 +6,7 @@
 
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
-# Assembler School: React Shopping Cart Project
+# Assembler School: React Shopping Cart Forms
 
 In this project you will learn how to create a React.js and how to apply all the
 important concepts.
@@ -26,7 +26,7 @@ account:
 <img src="https://docs.github.com/assets/images/help/repository/fork_button.jpg" alt="Fork on GitHub" width='450'>
 
 ```
-$ git clone https://github.com/assembler-school/react-shopping-cart-project.git
+$ git clone https://github.com/assembler-school/react-shopping-cart-forms.git
 ```
 
 ## Contents and Branches Naming Strategy
@@ -36,9 +36,8 @@ section.
 
 The branches follow a naming strategy like the following:
 
-- `{NN}-{section-name}`: includes the main contents and the instructions of the
-  section
-- `{NN}-{section-name}-solution`: includes the solution of the section
+- `main`: includes the main contents and the instructions
+- `assembler-solution`: includes the solution
 
 ### Fetching All the Branches
 
@@ -74,19 +73,21 @@ $ npm install
 
 ### Running the Tests
 
-@TODO
+The tests that validate your solution can be executed by running the following
+command:
 
 ```
-$ npm run test:components
+$ npm run test
 ```
 
 ### Git `precommit` and `prepush` Hooks
 
-@todo
+In the `assembler-solution` branch you can see an implementation of these tools
+if you'd like to use them.
 
 ## Deployment
 
-@TODO
+In this pill we won't deploy the app.
 
 ## Technologies used
 
@@ -111,6 +112,95 @@ found in the doc that the academic team will provide you.
 - You must use semantic HTML5 elements for all the markup of the application
 - Once you are done, you can move on to the optional ones that are marked as
   `Extra 💯`
+
+### 1. Creating new products using the `<NewProductForm />` component
+
+#### File
+
+```sh
+/src/components/NewProductForm.js
+```
+
+1. uncomment all the code in the `App` and `NewProductForm` components
+2. in this step you will need to call the `saveNewProduct(newProduct)` method in
+   the `App` component to store the new product in `state.products`.
+   1. once the product is stored in state, you will also have to set the
+      `newProductFormOpen` boolean to false so that the form is closed
+3. complete the code of the `NewProductForm` component so that it has a state
+   of:
+
+```js
+this.state = {
+  title: "",
+  price: 0,
+  img: "",
+  shortDescription: "",
+  longDescription: "",
+  unitsInStock: 0,
+  author: {
+    firstName: "",
+    lastName: "",
+    email: "",
+  },
+  errors: {},
+};
+```
+
+4. complete the code of all the event handlers of the component:
+
+```jsx
+// handleSubmit() {}
+// handleTitleInputChange() {}
+// handlePriceInputChange() {}
+// handleImgInputChange() {}
+// handleShortDescriptionInputChange() {}
+// handleLongDescriptionInputChange() {}
+// handleUnitsInStockInputChange() {}
+// handleAuthorFirstNameInputChange() {}
+// handleAuthorLastNameInputChange() {}
+// handleAuthorEmailInputChange() {}
+```
+
+5. define the missing form inputs using the `<Input />` component:
+
+- `title`:
+  - type: `text`
+  - `handleChange={this.handleTitleInputChange}`
+- `price`:
+  - type: `number`
+  - `handleChange={this.handlePriceInputChange}`
+- `img`:
+  - type: `text`
+  - `handleChange={this.handleImgInputChange}`
+- `shortDescription`:
+  - type: `text`
+  - `handleChange={this.handleShortDescriptionInputChange}`
+- `longDescription`:
+  - type: `text`
+  - `handleChange={this.handleLongDescriptionInputChange}`
+- `unitsInStock`:
+  - type: `text`
+  - `handleChange={this.handleUnitsInStockInputChange}`
+- `author.firstName`:
+  - type: `text`
+  - `handleChange={this.handleAuthorFirstNameInputChange}`
+- `author.lastName`:
+  - type: `text`
+  - `handleChange={this.handleAuthorLastNameInputChange}`
+- `author.email`:
+  - type: `text`
+  - `handleChange={this.handleAuthorEmailInputChange}`
+
+6. complete the code of the `handleSubmit(event)` to store the new product
+   1. capture the `productData` from the state of the component
+   2. pass it to the `addProductDetails(productData)` method
+   3. call `saveNewProduct(newProduct)` with the new product
+      1. this method comes from the `App` component
+      2. `const { saveNewProduct } = this.props;`
+
+#### Test suite name
+
+@TODO
 
 ## Project delivery
 
