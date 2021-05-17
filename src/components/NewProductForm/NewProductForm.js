@@ -49,6 +49,7 @@ class NewProductForm extends Component {
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
     this.handleTitleInputChange = this.handleTitleInputChange.bind(this);
     this.handlePriceInputChange = this.handlePriceInputChange.bind(this);
     this.handleImgInputChange = this.handleImgInputChange.bind(this);
@@ -80,33 +81,15 @@ class NewProductForm extends Component {
     saveNewProduct(newProduct);
   }
 
-  handleTitleInputChange(event) {
+  handleChange(event) {
     this.setState({
-      title: event.target.value,
+      [event.target.name]: event.target.value,
     });
   }
 
   handlePriceInputChange(event) {
     this.setState({
       price: Number(event.target.value),
-    });
-  }
-
-  handleImgInputChange(event) {
-    this.setState({
-      img: event.target.value,
-    });
-  }
-
-  handleShortDescriptionInputChange(event) {
-    this.setState({
-      shortDescription: event.target.value,
-    });
-  }
-
-  handleLongDescriptionInputChange(event) {
-    this.setState({
-      longDescription: event.target.value,
     });
   }
 
@@ -171,32 +154,37 @@ class NewProductForm extends Component {
             <Input
               type="text"
               label="Product title"
-              handleChange={this.handleTitleInputChange}
+              handleChange={this.handleChange}
               value={title}
+              name="title"
             />
             <Input
               type="number"
               label="Price"
               handleChange={this.handlePriceInputChange}
               value={price}
+              name="price"
             />
             <Input
               type="text"
               label="Image URL"
-              handleChange={this.handleImgInputChange}
+              handleChange={this.handleChange}
               value={img}
+              name="img"
             />
             <Input
               type="text"
               label="Short Description"
-              handleChange={this.handleShortDescriptionInputChange}
+              handleChange={this.handleChange}
               value={shortDescription}
+              name="shortDescription"
             />
             <Input
               type="text"
               label="Long Description"
-              handleChange={this.handleLongDescriptionInputChange}
+              handleChange={this.handleChange}
               value={longDescription}
+              name="longDescription"
             />
             <Input
               type="text"
